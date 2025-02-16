@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+.btn-futuristic {
+    background: linear-gradient(90deg, #ff0000, #ff4d4d);
+    border: 2px solid #ff0000;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 0px 8px rgba(255, 0, 0, 0.8);
+  }
+  
+  .btn-futuristic:hover {
+    background: #ff1a1a;
+    box-shadow: 0px 0px 12px rgba(255, 0, 0, 1);
+  }
+  
+  .btn-futuristic-google {
+    background: white;
+    border: 2px solid #ff0000;
+    color: black;
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .btn-futuristic-google:hover {
+    background: #ff4d4d;
+    color: white;
+  }
+  
+  .input-cyber {
+    background: transparent;
+    border: 2px solid #ff0000;
+    padding: 12px;
+    color: white;
+    font-size: 1rem;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .input-cyber:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0px 0px 8px rgba(255, 0, 0, 0.8);
+  }
+  .glow-border {
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(255, 0, 0, 0.8);
+    transition: 0.3s ease-in-out;
+  }
+  
+  .glow-border:hover {
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 1);
+  }
+  
+  .glow-border:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0px 0px 15px rgba(255, 77, 77, 1);
+  }
+  /* Glowing Text Effect */
+.glow-text {
+  text-shadow: 0 0 15px #ff3333, 0 0 30px #ff3333, 0 0 45px #ff3333;
+}
+
+/* Neon Glow Effect */
+.cyber-glow {
+  box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.8);
+}
+
+/* Glowing Input */
+.glow-input {
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.6);
+}
+
+/* Glowing Button */
+.glow-button {
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.8);
+  transition: 0.3s;
+}
+
+.glow-button:hover {
+  box-shadow: 0px 0px 20px rgba(255, 0, 0, 1);
+  transform: scale(1.05);
+}
+
+/* Chat Bubbles */
+.chat-container {
+  background: linear-gradient(130deg, #0d0d0d, #000000);
+  box-shadow: inset 0px 0px 10px rgba(255, 0, 0, 0.6);
+}
