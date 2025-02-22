@@ -23,7 +23,7 @@ const MODELS = [
   'gradient_boosting'
 ];
 
-const BASE_URL = 'https://nt-backend-y8h1.onrender.com';
+const BASE_URL = 'http://localhost:5000/';
 
 function Prediction() {
   const [model, setModel] = useState('random_forest');

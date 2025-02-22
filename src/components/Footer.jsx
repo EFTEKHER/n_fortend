@@ -12,20 +12,20 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-6">
-            <a href="#" className="text-gray-400 hover:text-red-500">
+            <a href="https://github.com/RanaNasir419" className="text-gray-400 hover:text-red-500">
               <FaGithub className="h-5 w-5" />
             </a>
             <a href="#" className="text-gray-400 hover:text-red-500">
               <FaTwitter className="h-5 w-5" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-red-500">
+            <a href="https://www.linkedin.com/in/md-nasir-uddin-rana-a15b28247/" className="text-gray-400 hover:text-red-500">
               <FaLinkedin className="h-5 w-5" />
             </a>
           </div>
         </div>
         
         <div className="mt-4 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} Network Intrusion Detection System. All rights reserved.
+          © {new Date().getFullYear()} Network Intrusion Detection System designed by Md Nasir Uddin Rana. All rights reserved.
         </div>
       </div>
     </footer>

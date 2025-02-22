@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { IoSend, IoChatbubblesOutline, IoPerson, IoEllipsisHorizontal, IoAlertCircleOutline } from "react-icons/io5";
 
-const BASE_URL = "https://nt-backend-y8h1.onrender.com";
+const BASE_URL = "http://localhost:5000/";
 
 function ChatbotPage() {
   const [message, setMessage] = useState("");
