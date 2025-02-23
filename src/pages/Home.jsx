@@ -1,54 +1,113 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaShieldAlt, FaDatabase, FaChartLine, FaCommentDots, FaLock, FaRobot, FaNetworkWired, FaBug, FaRocket } from 'react-icons/fa';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { 
+  FaShieldAlt, FaDatabase, FaChartLine, FaCommentDots, 
+  FaLock, FaRobot, FaNetworkWired, FaBug, FaRocket 
+} from "react-icons/fa";
+import { GiArtificialIntelligence } from "react-icons/gi";
 
 const Home = () => {
   const features = [
-    { icon: FaShieldAlt, title: 'Real-time Detection', description: 'Monitor and detect network intrusions in real-time using AI-powered analytics.' },
-    { icon: FaDatabase, title: 'Comprehensive Dataset', description: 'Analyze extensive network traffic data to identify patterns of malicious activities.' },
-    { icon: FaChartLine, title: 'Advanced Analytics', description: 'Visualize and interpret network behavior using machine learning models.' },
-    { icon: FaCommentDots, title: 'AI Assistant', description: 'Get instant help and insights from our AI chatbot trained in cybersecurity.' },
-    { icon: FaLock, title: 'Threat Prevention', description: 'Predict and prevent cyber threats before they infiltrate your network.' },
-    { icon: FaRobot, title: 'Machine Learning Models', description: 'Utilize powerful ML algorithms like Random Forest, XGBoost, and KNN for accurate predictions.' },
-    { icon: FaNetworkWired, title: 'Network Traffic Analysis', description: 'Analyze traffic data from different sources to detect anomalies and security breaches.' },
-    { icon: FaBug, title: 'Intrusion Reporting', description: 'Generate detailed reports of detected intrusions and suspicious activities.' }
+    { icon: FaShieldAlt, title: 'Real-time Detection', description: 'AI-powered network monitoring' },
+    { icon: FaDatabase, title: 'Comprehensive Data', description: 'Analyze traffic patterns' },
+    { icon: FaChartLine, title: 'Advanced Analytics', description: 'ML-driven insights' },
+    { icon: GiArtificialIntelligence, title: 'AI Assistant', description: '24/7 cybersecurity support' },
+    { icon: FaLock, title: 'Threat Prevention', description: 'Proactive defense system' },
+    { icon: FaRobot, title: 'ML Models', description: 'RF, XGBoost, KNN algorithms' },
+    { icon: FaNetworkWired, title: 'Traffic Analysis', description: 'Anomaly detection' },
+    { icon: FaBug, title: 'Intrusion Reports', description: 'Detailed security analytics' }
   ];
 
-  return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        
-        {/* Header Section */}
-        <div className="text-center">
-          <h1 className="text-5xl font-extrabold text-red-500 glow-text mb-6 flex justify-center items-center">
-            <FaRocket className="mr-2 text-5xl" />
-            Next-Gen Network Security
-          </h1>
-          <p className="text-lg text-gray-300 mb-8">
-            Protect your network with AI-powered intrusion detection and real-time monitoring.
-          </p>
-          
-          {/* 🚀 Missing Buttons Added Here */}
-          <div className="flex justify-center gap-6 mt-6">
-            <Link to="/prediction" className="btn-cyber bg-red-900 text-[white] rounded-2xl p-4 font-extrabold">
-              🔥 Start Detection
-            </Link>
-            <Link to="/chatbot" className="btn-cyber  bg-red-900 text-[white] rounded-2xl p-4 font-extrabold">
-              🤖 AI Chatbot
-            </Link>
-          </div>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
 
-        {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16">
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { type: "spring", stiffness: 120 }
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Header Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <FaRocket className="text-4xl text-red-500 animate-pulse" />
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">
+              CyberShield AI
+            </h1>
+          </div>
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Next-generation network security powered by artificial intelligence and machine learning
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link 
+                to="/prediction" 
+                className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-red-500/30 transition-all"
+              >
+                <FaChartLine />
+                Start Detection
+              </Link>
+            </motion.div>
+            
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link 
+                to="/chatbot" 
+                className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-purple-500/30 transition-all"
+              >
+                <GiArtificialIntelligence />
+                AI Assistant
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* Features Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {features.map((feature, index) => (
-            <div key={index} className="cyber-bg p-6 rounded-lg cyber-border text-center shadow-lg">
-              <feature.icon className="h-14 w-14 text-red-500 mb-4 glow-icon" />
-              <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
-            </div>
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              whileHover={{ 
+                y: -5,
+                boxShadow: "0 10px 20px rgba(239, 68, 68, 0.1)"
+              }}
+              className="p-6 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-red-500 transition-all"
+            >
+              <div className="flex flex-col items-center text-center">
+                <feature.icon className="h-12 w-12 text-red-500 mb-4 animate-float" />
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400 text-sm">
+                  {feature.description}
+                </p>
+              </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

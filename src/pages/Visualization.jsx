@@ -1,5 +1,21 @@
 import React from 'react';
-import { FaChartBar, FaTree, FaCogs, FaRobot, FaCog } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { 
+  FaChartBar, FaTree, FaCogs, FaRobot, FaCog, FaBrain, 
+  FaChartLine, FaProjectDiagram, FaNetworkWired, FaCodeBranch,
+  FaSitemap, FaFilter, FaChartArea
+} from 'react-icons/fa';
+import { FiBarChart2, FiPieChart, FiTrendingUp } from 'react-icons/fi';
+// Import all images as before
+
+const cardVariants = {
+  offscreen: { y: 50, opacity: 0 },
+  onscreen: { 
+    y: 0,
+    opacity: 1,
+    transition: { type: 'spring', bounce: 0.4, duration: 0.8 }
+  }
+};
 import Output from '../assets/output.png';
 import AdaBoostConfusionMatrix from '../assets/AdaBoost_confusion_matrix.png';
 import DecisionTreeConfusionMatrix from '../assets/DecisionTree_confusion_matrix.png';
@@ -18,7 +34,7 @@ import srvCountKdeplot from '../assets/srv_count_kdeplot.png';
 
 const Visualization = () => {
   return (
-    <div className="bg-black p-6 text-white">
+    <div className=" bg-gradient-to-br from-gray-800 to-gray-900  p-4  text-white">
       <h1 className="text-center text-4xl glow-text mb-8">Model Performance & Data Insights</h1>
       <div className="bg-gradient-to-r from-red-600 to-black rounded-lg p-4 glow-border h-[25%]">
       <img src={Output} alt="Gradient Boosting Confusion Matrix" className="w-full rounded-lg" />

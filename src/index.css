@@ -1,5 +1,31 @@
 @import "tailwindcss";
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in;
+}
 .btn-futuristic {
     background: linear-gradient(90deg, #ff0000, #ff4d4d);
     border: 2px solid #ff0000;
@@ -93,4 +119,12 @@
 .chat-container {
   background: linear-gradient(130deg, #0d0d0d, #000000);
   box-shadow: inset 0px 0px 10px rgba(255, 0, 0, 0.6);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
 }

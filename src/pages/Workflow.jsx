@@ -3,7 +3,7 @@ import { FaDatabase, FaBug, FaProjectDiagram, FaChartBar, FaCogs, FaNetworkWired
 import { GiProcessor, GiArtificialIntelligence, GiMeshNetwork } from "react-icons/gi";
 import { MdOutlineDataThresholding, MdOutlineModelTraining, MdPrecisionManufacturing } from "react-icons/md";
 import { SiScikitlearn } from "react-icons/si";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const workflowSteps = [
   {
     icon: <FaDatabase className="text-red-500 text-5xl" />,
@@ -59,9 +59,9 @@ const workflowSteps = [
 
 const Workflow = () => {
   return (
-    <div className="min-h-screen bg-black py-16 px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-16 px-8">
       <div className="max-w-7xl mx-auto text-center">
-        <h1 className="text-4xl font-bold text-red-500 mb-6 glow-text flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-red-500 mb-6  flex items-center justify-center">
           <FaNetworkWired className="mr-3 text-5xl" />
           Network Intrusion Detection Workflow
         </h1>

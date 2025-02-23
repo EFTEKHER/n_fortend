@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { IoSend, IoChatbubblesOutline, IoPerson, IoEllipsisHorizontal, IoAlertCircleOutline } from "react-icons/io5";
+import {
+  IoSend,
+  IoChatbubblesOutline,
+  IoPersonCircleOutline,
+  IoAlertCircleOutline,
+  IoCodeWorkingOutline
+} from "react-icons/io5";
+import { motion, AnimatePresence } from "framer-motion";
 
 const BASE_URL = "http://localhost:5000/";
 
@@ -13,12 +20,10 @@ function ChatbotPage() {
   const [error, setError] = useState("");
   const chatContainerRef = useRef(null);
 
-  // Function to auto-scroll to the latest message
   useEffect(() => {
     chatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Function to send a message
   const handleChat = async (e) => {
     e.preventDefault();
     if (!message.trim()) return;
@@ -41,7 +46,6 @@ function ChatbotPage() {
     }
   };
 
-  // Function to handle Enter key for message sending
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -50,69 +54,98 @@ function ChatbotPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 py-8">
-      <div className="w-full max-w-3xl p-6 bg-black border-2 border-red-600 rounded-lg shadow-lg cyber-glow">
-        
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4 md:p-6">
+      <motion.div 
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden"
+      >
         {/* Header */}
-        <h1 className="text-4xl font-extrabold text-red-500 glow-text text-center flex items-center justify-center mb-6">
-          <IoChatbubblesOutline className="mr-2 text-5xl" />
-          AI Chatbot Assistant
-        </h1>
-
-        {/* Chat Display Box */}
-        <div className="h-96 overflow-y-auto p-4 border border-red-500 rounded-md bg-black chat-container">
-          {messages.map((msg, index) => (
-            <div key={index} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
-              <div
-                className={`p-3 rounded-lg text-white my-2 max-w-xs ${
-                  msg.sender === "user" ? "bg-red-600" : "bg-gray-800 border-l-4 border-red-500"
-                }`}
-              >
-                {msg.sender === "user" ? <IoPerson className="inline-block mr-1" /> : <IoChatbubblesOutline className="inline-block mr-1" />}
-                {msg.text}
-              </div>
-            </div>
-          ))}
-          <div ref={chatContainerRef}></div>
+        <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-6 flex items-center space-x-4">
+          <IoChatbubblesOutline className="text-3xl text-white animate-pulse" />
+          <h1 className="text-2xl font-bold text-white">AI Chat Assistant</h1>
         </div>
 
-        {/* Error Message */}
-        {error && (
-          <div className="mt-4 p-3 bg-red-900 border border-red-700 rounded-md flex items-center">
-            <IoAlertCircleOutline className="text-red-400 mr-2" />
-            <p className="text-red-400">{error}</p>
-          </div>
-        )}
+        {/* Chat Container */}
+        <div className="h-80 md:h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <AnimatePresence>
+            {messages.map((msg, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+              >
+                <div
+                  className={`max-w-xs md:max-w-md p-3 rounded-2xl ${
+                    msg.sender === "user" 
+                      ? "bg-blue-600 text-white"
+                      : "bg-white text-gray-800 shadow-md"
+                  }`}
+                >
+                  <div className="flex items-center space-x-2 mb-2">
+                    {msg.sender === "user" ? (
+                      <IoPersonCircleOutline className="text-xl" />
+                    ) : (
+                      <IoCodeWorkingOutline className="text-xl text-purple-600" />
+                    )}
+                    <span className="text-sm font-medium">
+                      {msg.sender === "user" ? "You" : "Assistant"}
+                    </span>
+                  </div>
+                  <p className="text-sm">{msg.text}</p>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+          <div ref={chatContainerRef} />
+        </div>
 
-        {/* Input & Send Button */}
-        <form onSubmit={handleChat} className="mt-4 flex space-x-3">
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Type your message here..."
-            className="w-full h-12 p-3 bg-black border border-red-600 text-white rounded-md focus:ring-2 focus:ring-red-500 glow-input resize-none"
-            onKeyDown={handleKeyPress}
-          />
+        {/* Input Area */}
+        <div className="p-4 bg-white border-t border-gray-200">
+          {error && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mb-4 p-3 bg-red-100 rounded-lg flex items-center text-red-600 text-sm"
+            >
+              <IoAlertCircleOutline className="mr-2 animate-bounce" />
+              {error}
+            </motion.div>
+          )}
 
-          <button
-            type="submit"
-            disabled={loading || !message.trim()}
-            className="p-4  border-red-600 bg-red-700 hover:bg-red-900 cyber-glow text-white font-bold rounded-md transition duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed glow-button"
-          >
-            {loading ? (
-              <>
-                <IoEllipsisHorizontal className="animate-pulse mr-2" />
-                Processing...
-              </>
-            ) : (
-              <>
-                <IoSend className="mr-2 cyber-glow " />
-                Send
-              </>
-            )}
-          </button>
-        </form>
-      </div>
+          <form onSubmit={handleChat} className="flex flex-col md:flex-row gap-2">
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={handleKeyPress}
+              placeholder="Type your message..."
+              className="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none transition-all"
+              rows="1"
+            />
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              disabled={loading || !message.trim()}
+              className="p-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            >
+              {loading ? (
+                <div className="flex items-center">
+                  <span className="animate-spin">🌀</span>
+                </div>
+              ) : (
+                <>
+                  <IoSend className="text-lg" />
+                  <span className="hidden md:inline">Send</span>
+                </>
+              )}
+            </motion.button>
+          </form>
+        </div>
+      </motion.div>
     </div>
   );
 }
