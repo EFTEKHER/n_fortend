@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { 
   IoAlertCircleOutline, 
   IoCheckmarkCircle,
@@ -17,6 +19,7 @@ import {
   IoRocket,
   IoArrowForward
 } from 'react-icons/io5';
+import { savePrediction } from '../services/predictionService.js';
 
 const FEATURES = [
   { name: 'src_bytes', icon: <IoSwapHorizontal /> },
@@ -69,8 +72,20 @@ function Prediction() {
 
       setPrediction(response.data.prediction);
       setExplanation(response.data.explanation);
+
+      // Save to Firebase
+      await savePrediction({
+        model,
+        input: inputData,
+        prediction: response.data.prediction,
+        explanation: response.data.explanation
+      });
+
+      toast.success('Prediction saved successfully!');
     } catch (err) {
-      setError('Failed to get prediction. Please try again.');
+      const errorMessage = err.response?.data?.error || 'Failed to get prediction. Please try again.';
+      setError(errorMessage);
+      toast.error(errorMessage);
       console.error(err);
     } finally {
       setLoading(false);
@@ -204,6 +219,18 @@ function Prediction() {
           )}
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={true}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 }

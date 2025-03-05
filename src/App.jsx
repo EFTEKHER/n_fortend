@@ -11,7 +11,8 @@ import Visualization from './pages/Visualization';
 import Workflow from './pages/Workflow';
 import Chatbot from './pages/Chatbot';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import AllPredictionsView from './pages/AllPredictionsView';
+import DataTable from './pages/DataTable';
 function App() {
   return (
     <Router>
@@ -44,6 +45,16 @@ function App() {
             <Route path="/workflow" element={
               <ProtectedRoute>
                 <Workflow />
+              </ProtectedRoute>
+            } />
+           <Route path="/all-predictions" element={
+              <ProtectedRoute>
+                <AllPredictionsView />
+              </ProtectedRoute>
+            } />
+            <Route path="/data-table" element={
+              <ProtectedRoute>
+                <DataTable />
               </ProtectedRoute>
             } />
             <Route path="/chatbot" element={

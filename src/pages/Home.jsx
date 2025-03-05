@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   FaShieldAlt, FaDatabase, FaChartLine, FaCommentDots, 
-  FaLock, FaRobot, FaNetworkWired, FaBug, FaRocket 
+  FaLock, FaRobot, FaNetworkWired, FaBug, FaRocket,
+  FaList, FaTable 
 } from "react-icons/fa";
 import { GiArtificialIntelligence } from "react-icons/gi";
 
@@ -74,6 +75,26 @@ const Home = () => {
               >
                 <GiArtificialIntelligence />
                 AI Assistant
+              </Link>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link 
+                to="/all-predictions" 
+                className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all"
+              >
+                <FaList />
+                All Predictions
+              </Link>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Link 
+                to="/data-table" 
+                className="flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 rounded-lg font-semibold text-white hover:shadow-lg hover:shadow-green-500/30 transition-all"
+              >
+                <FaTable />
+                Data Table
               </Link>
             </motion.div>
           </div>
