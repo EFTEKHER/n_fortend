@@ -13,6 +13,7 @@ import Chatbot from './pages/Chatbot';
 import ProtectedRoute from './components/ProtectedRoute';
 import AllPredictionsView from './pages/AllPredictionsView';
 import DataTable from './pages/DataTable';
+import CSVFilePrediction from './pages/CSVFilePrediction';
 function App() {
   return (
     <Router>
@@ -55,6 +56,11 @@ function App() {
             <Route path="/data-table" element={
               <ProtectedRoute>
                 <DataTable />
+              </ProtectedRoute>
+            } />
+            <Route path="/csv-file-prediction" element={
+              <ProtectedRoute>
+                <CSVFilePrediction />
               </ProtectedRoute>
             } />
             <Route path="/chatbot" element={

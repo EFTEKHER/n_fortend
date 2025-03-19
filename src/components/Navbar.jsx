@@ -29,6 +29,7 @@ const Navbar = () => {
               <Link to="/visualization" className="text-white hover:text-red-500">Visualization</Link>
               <Link to="/workflow" className="text-white hover:text-red-500">Workflow</Link>
               <Link to="/chatbot" className="text-white hover:text-red-500">Chatbot</Link>
+              <Link to="/csv-file-prediction" className="text-white hover:text-red-500">CSVPrediction</Link>
             </>
           )}
         </div>
@@ -80,6 +81,7 @@ const Navbar = () => {
               <Link to="/visualization" className="text-white hover:text-red-500" onClick={() => setMenuOpen(false)}>Visualization</Link>
               <Link to="/workflow" className="text-white hover:text-red-500" onClick={() => setMenuOpen(false)}>Workflow</Link>
               <Link to="/chatbot" className="text-white hover:text-red-500" onClick={() => setMenuOpen(false)}>Chatbot</Link>
+              <Link to="/csv-file-prediction" className="text-white hover:text-red-500" onClick={() => setMenuOpen(false)}>CSVPrediction</Link>
             </>
           )}
 
