@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-4 text-center text-gray-400 text-sm">
-          © {new Date().getFullYear()} Network Intrusion Detection System designed by Md Nasir Uddin Rana. All rights reserved.
+          © {new Date().getFullYear()} Network Intrusion Detection System designed by Efte. All rights reserved.
         </div>
       </div>
     </footer>
